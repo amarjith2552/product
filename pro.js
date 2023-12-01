@@ -44,3 +44,53 @@ function regg(){
          }
      }
  }
+
+ function add1(){
+    const pro={
+        idd:idd.value,
+        namee:namee.value,
+        cat:cat.value,
+        price:price.value,
+        review:review.value
+    }
+    console.log(pro);
+        if(pro.idd=='' || pro.namee=='' || pro.cat=='' || pro.price=='' || pro.review==''){
+            alert('fill all datas')
+        }
+        else{
+            if(pro.idd in localStorage){
+            alert('product already exists')
+        }
+        else{
+            localStorage.setItem('product',JSON.stringify(pro))
+        alert('product details added successfully')
+        
+        }
+        }
+}
+
+function reset1(){
+localStorage.clear()
+}
+
+function search(){
+idd=document.getElementById('idd').value
+let product= JSON.parse(localStorage.getItem('pro'))
+if(product.idd==idd){
+result.innerHTML=`<div class="card p-3 m-2 rounded-4">
+<div class="body">
+<h5 class="card-title text-center">${product.idd}</h5>
+</div>
+
+<p>name: ${product.namee}</p>
+<p>category: ${product.cat}</p>
+<p>price:$ ${product.price}</p>
+<p>review: ${product.review}</p>
+
+
+
+
+
+</div>`
+}
+}
